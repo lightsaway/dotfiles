@@ -1,0 +1,132 @@
+
+# brew GNU core utilities (those that come with macOS are outdated).
+# Don’t forget to add `$( --prefix coreutils)/libexec/gnubin` to `$PATH`.
+tap "bramstein/webfonttools"
+tap "caskroom/cask"
+tap "caskroom/fonts"
+tap "caskroom/versions"
+tap "getantibody/tap"
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "homebrew/dupes"
+
+#MAC APP STORE CLI
+brew "mas"
+
+brew "coreutils"
+
+# brew some other useful utilities like `sponge`.
+brew "moreutils"
+# brew GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
+brew "findutils"
+# brew GNU `sed`, overwriting the built-in `sed`.
+brew "gnu-sed" ,args: ["--with-default-names"]
+brew "autojump"
+
+# brew Bash 4.
+# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
+# running `chsh`.
+brew "bash"
+brew "bash-completion2"
+brew "zsh"
+brew "zsh-completions"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+brew "getantibody/tap/antibody"
+
+# brew `wget` with IRI support.
+brew "wget" ,args: ["--with-iri"]
+# brew GnuPG to enable PGP-signing commits.
+brew "gnupg"
+brew "gettext"
+
+# brew font tools.
+brew "sfnt2woff"
+brew "sfnt2woff-zopfli"
+brew "woff2"
+brew "bramstein/webfonttools/sfnt2woff"
+brew "bramstein/webfonttools/sfnt2woff-zopfli"
+brew "bramstein/webfonttools/woff2"
+
+# brew more recent versions of some macOS tools.
+brew "vim" ,args:["--with-override-system-vi"]
+cask "sublime-text"
+brew "grep"
+brew "openssh"
+brew "screen"
+
+
+# Programming
+brew "scala"
+brew "ruby"
+brew "python3"
+brew "pyenv"
+brew "apache-spark"
+brew "go"
+brew "glide"
+brew "lua"
+brew "rust"
+brew "elixir"
+brew "node"
+brew "git"
+brew "git-crypt"
+brew "git-lfs"
+
+brew "tfenv" #Terraform
+brew "awscli"
+
+brew "jq"
+brew "awk"
+brew "midnight-commander"
+brew "tor"
+brew "torsocks"
+brew "watch"
+brew "tmux"
+
+# brew some CTF tools; see https://github.com/ctfs/write-ups.
+brew "aircrack-ng"
+brew "bfg"
+brew "binutils"
+brew "binwalk"
+brew "cifer"
+brew "dex2jar"
+brew "dns2tcp"
+brew "fcrackzip"
+brew "foremost"
+brew "hashpump"
+brew "hydra"
+brew "john"
+brew "knock"
+brew "netpbm"
+brew "nmap"
+brew "pngcheck"
+brew "socat"
+brew "sqlmap"
+brew "tcpflow"
+brew "tcpreplay"
+brew "tcptrace"
+brew "ucspi-tcp" # `tcpserver` etc.
+brew "xz"
+
+# brew other useful binaries.
+brew "ack"
+# brew exiv2
+brew "git"
+brew "git-lfs"
+brew "imagemagick" ,args: ["--with-webp"]
+
+brew "lynx"
+brew "p7zip"
+brew "pigz"
+brew "pv"
+brew "rename"
+brew "rlwrap"
+brew "ssh-copy-id"
+brew "tree"
+brew "vbindiff"
+brew "zopfli"
+
+brew "peco"
+
+#MUSIC
+brew "shpotify"

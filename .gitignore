@@ -1,0 +1,5 @@
+oh-my-zsh
+backup
+
+#excluding symlink to self if created
+dotfiles
