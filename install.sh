@@ -1,3 +1,5 @@
+
+
 source .env_default
 source .aliases
 source .functions
@@ -86,6 +88,7 @@ printf "${GREEN}Installing oh-my-zsh${NORMAL}\n"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 cp .profile ${HOME}/.profile
+cp .bash_profile ${HOME}/.bash_profile
 cp .zshrc ${HOME}/.zshrc
 
 printf "${GREEN}Reloading shell${NORMAL}\n"

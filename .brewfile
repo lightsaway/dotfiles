@@ -114,6 +114,7 @@ brew "ack"
 brew "git"
 brew "git-lfs"
 brew "imagemagick" ,args: ["--with-webp"]
+brew "htop"
 
 brew "lynx"
 brew "p7zip"
