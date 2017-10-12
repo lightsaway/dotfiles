@@ -14,7 +14,8 @@ tap "homebrew/dupes"
 brew "mas"
 
 brew "coreutils"
-
+#DOT FILE MANAGER
+brew "stow"
 # brew some other useful utilities like `sponge`.
 brew "moreutils"
 # brew GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
@@ -57,6 +58,8 @@ brew "screen"
 
 
 # Programming
+brew "sbt"
+brew "maven"
 brew "scala"
 brew "ruby"
 brew "python3"
@@ -128,6 +131,10 @@ brew "vbindiff"
 brew "zopfli"
 
 brew "peco"
+brew "md5sha1sum"
+
 
 #MUSIC
 brew "shpotify"
+brew "flac"
+brew "sox"

@@ -11,7 +11,8 @@ for file in .{functions,aliases,exports}; do
    file="$HOME/.dotfiles/$file"
    [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done
-
+unset file
 [ -r "${HOME}/.extra" ] && [ -f "${HOME}/.extra" ] && source "${HOME}/.extra";
 
-unset file
+
+export GIT_EDITOR=vim
