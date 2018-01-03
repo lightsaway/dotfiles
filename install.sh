@@ -69,7 +69,6 @@ brew bundle cleanup --file=.brewfile
 
 
 
-
 # Add entries to shells
 #
 printf "${GREEN}Modifying /etc/shells entries${NORMAL}\n"
@@ -103,3 +102,7 @@ reload
 # OSX settings
 # TODO: test
 # source .settings.osx
+
+
+printf "${GREEN}Git configuration${NORMAL}\n"
+ln -fs ${DOT_FOLDER}/.gitconfig ${HOME}/.gitconfig

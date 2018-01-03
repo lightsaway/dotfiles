@@ -75,11 +75,13 @@ brew "lua"
 brew "rust"
 brew "elixir"
 brew "node"
+brew "nvm"
 brew "git"
 brew "git-crypt"
 brew "git-lfs"
 
 brew "tfenv" #Terraform
+brew "packer"
 brew "awscli"
 
 brew "jq"
