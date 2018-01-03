@@ -188,3 +188,11 @@ function o() {
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
+
+function kfk_send(){
+kafka-console-producer --broker-list ${2:-"localhost:9092"} --topic $1
+}
+
+function kfk_read(){
+kafka-console-consumer --bootstrap-server ${2:-"localhost:9092"} --topic $1 --from-beginning
+}	

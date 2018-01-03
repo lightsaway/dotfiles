@@ -23,6 +23,8 @@ brew "findutils"
 # brew GNU `sed`, overwriting the built-in `sed`.
 brew "gnu-sed" ,args: ["--with-default-names"]
 brew "autojump"
+# Magnificent app which corrects your previous console command
+brew "thefuck"
 
 # brew Bash 4.
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
@@ -62,9 +64,11 @@ brew "sbt"
 brew "maven"
 brew "scala"
 brew "ruby"
+brew "rbenv"
 brew "python3"
 brew "pyenv"
 brew "apache-spark"
+brew "cmake"
 brew "go"
 brew "glide"
 brew "lua"
@@ -79,6 +83,7 @@ brew "tfenv" #Terraform
 brew "awscli"
 
 brew "jq"
+brew "jshon"
 brew "awk"
 brew "midnight-commander"
 brew "tor"
@@ -114,8 +119,6 @@ brew "xz"
 # brew other useful binaries.
 brew "ack"
 # brew exiv2
-brew "git"
-brew "git-lfs"
 brew "imagemagick" ,args: ["--with-webp"]
 brew "htop"
 
@@ -136,5 +139,6 @@ brew "md5sha1sum"
 
 #MUSIC
 brew "shpotify"
+## convertors
 brew "flac"
 brew "sox"
