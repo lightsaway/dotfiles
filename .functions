@@ -181,6 +181,10 @@ function o() {
 	fi;
 }
 
+function restart(){
+	sudo shutdown -r now
+}
+
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into
 # `less` with options to preserve color and line numbers, unless the output is
@@ -190,9 +194,9 @@ function tre() {
 }
 
 function kfk_send(){
-kafka-console-producer --broker-list ${2:-"localhost:9092"} --topic $1
+	kafka-console-producer --broker-list ${2:-"localhost:9092"} --topic $1
 }
 
 function kfk_read(){
-kafka-console-consumer --bootstrap-server ${2:-"localhost:9092"} --topic $1 --from-beginning
+	kafka-console-consumer --bootstrap-server ${2:-"localhost:9092"} --topic $1 --from-beginning
 }	

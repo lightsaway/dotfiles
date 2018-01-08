@@ -1,7 +1,6 @@
 [user]
 	email = anton.serhiienko@klarna.com
 	name = Anton Serhiienko
-
 [push]
 
 	# https://git-scm.com/docs/git-config#git-config-pushdefault
