@@ -90,7 +90,7 @@ ln -fs .profile ${HOME}/.profile
 ln -fs .bash_profile ${HOME}/.bash_profile
 ln -fs .zshrc ${HOME}/.zshrc
 ln -fs .vimrc ${HOME}/.vimrc
-
+ln -fs .gitconfig ${HOME}/.gitconfig
 
 printf "${GREEN}Reloading shell${NORMAL}\n"
 reload
@@ -107,4 +107,3 @@ reload
 
 
 printf "${GREEN}Git configuration${NORMAL}\n"
-ln -fs ${DOT_FOLDER}/.gitconfig ${HOME}/.gitconfig
