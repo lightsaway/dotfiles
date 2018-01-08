@@ -86,9 +86,11 @@ fi;
 printf "${GREEN}Installing oh-my-zsh${NORMAL}\n"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-cp .profile ${HOME}/.profile
-cp .bash_profile ${HOME}/.bash_profile
-cp .zshrc ${HOME}/.zshrc
+ln -fs .profile ${HOME}/.profile
+ln -fs .bash_profile ${HOME}/.bash_profile
+ln -fs .zshrc ${HOME}/.zshrc
+ln -fs .vimrc ${HOME}/.vimrc
+
 
 printf "${GREEN}Reloading shell${NORMAL}\n"
 reload

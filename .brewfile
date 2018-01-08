@@ -25,6 +25,8 @@ brew "gnu-sed" ,args: ["--with-default-names"]
 brew "autojump"
 # Magnificent app which corrects your previous console command
 brew "thefuck"
+# Symlink manager
+brew "stow"
 
 # brew Bash 4.
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
