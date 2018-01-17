@@ -4,42 +4,100 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" Plugins installation
 call plug#begin('~/.vim/plugged')
 
-" Go plugins
+""""""""""""""""" langs
+Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'fatih/vim-go'
 Plug 'raphael/vim-present-simple'
-" Scala
-Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
-
-" Markup plugins
-Plug 'tpope/vim-markdown'
- 
+Plug 'rust-lang/rust.vim'
 
 
-Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
-Plug 'wincent/command-t' "needs rake make
-Plug 'terryma/vim-multiple-cursors'  " Ctrl-n => default key
+Plug 'tpope/vim-markdown'       	 	" Markup plugin
+Plug 'Shougo/vimfiler.vim'                	" file explorer
+Plug 'bronson/vim-trailing-whitespace'    	" :FixWhiteSpace
+Plug 'Shougo/unite.vim'                   	" buffer
+Plug 'Shougo/vimproc.vim'                 	" interactive command exec
+Plug 'ryanoasis/vim-devicons'             	" utf8 icons
+Plug 'itchyny/lightline.vim' 		    	" status line
+Plug 'scrooloose/nerdtree' 		    	" tree
+Plug 'scrooloose/nerdcommenter'             	" comment easy
+Plug 'wincent/command-t' "needs rake make   	" file jumber
+Plug 'terryma/vim-multiple-cursors'  	    	" Ctrl-n => default key
+Plug 'ctrlpvim/ctrlp.vim'                 	" fuzzy search
 Plug 'ervandew/supertab'
 
-" Git plugins
+" git plugins
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-git'
 
+""""""""""""" themes
 Plug 'altercation/vim-colors-solarized'
+Plug 'liuchengxu/space-vim-dark'
 
-" Initialize plugin system
 call plug#end()
+
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap <Leader>8 :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" https://blog.mikecordell.com/2015/01/27/better-fuzzy-search-with-ctrl-p-in-vim.html
+if executable('matcher')
+    let g:ctrlp_match_func = { 'match': 'GoodMatch' }
+
+    function! GoodMatch(items, str, limit, mmode, ispath, crfile, regex)
+
+      " Create a cache file if not yet exists
+      let cachefile = ctrlp#utils#cachedir().'/matcher.cache'
+      if !( filereadable(cachefile) && a:items == readfile(cachefile) )
+        call writefile(a:items, cachefile)
+      endif
+      if !filereadable(cachefile)
+        return []
+      endif
+
+      " a:mmode is currently ignored. In the future, we should probably do
+      " something about that. the matcher behaves like "full-line".
+      let cmd = 'matcher --limit '.a:limit.' --manifest '.cachefile.' '
+      if !( exists('g:ctrlp_dotfiles') && g:ctrlp_dotfiles )
+        let cmd = cmd.'--no-dotfiles '
+      endif
+      let cmd = cmd.a:str
+
+      return split(system(cmd), "\n")
+
+    endfunction
+end
+
 
 filetype plugin indent on
 let mapleader=","
-color solarized
+"color solarized
+"colorscheme space-vim-dark
+color space-vim-dark
+set cursorline " Highlight current line
 set noswapfile
+set encoding=utf8
+"set guifont=DroidSansMono_Nerd_Font:h11
+
 
 " Use space for :
 noremap <space> :
+map <leader>q :bd<Enter>
 
 " Quick ESC
 imap jj <ESC>

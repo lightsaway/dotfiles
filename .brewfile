@@ -1,4 +1,3 @@
-
 # brew GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$( --prefix coreutils)/libexec/gnubin` to `$PATH`.
 tap "bramstein/webfonttools"
@@ -9,10 +8,19 @@ tap "getantibody/tap"
 tap "homebrew/bundle"
 tap "homebrew/core"
 tap "homebrew/dupes"
+tap "ethereum/ethereum" 
+
+brew "solidity"
+linkapps "solidity"
+
+#FONTS!!!
+cask "font-hack-nerd-font"
 
 #MAC APP STORE CLI
 brew "mas"
 
+brew "direnv"
+brew "the_silver_searcher" # the mighty ag
 brew "coreutils"
 #DOT FILE MANAGER
 brew "stow"
@@ -62,6 +70,7 @@ brew "screen"
 
 
 # Programming
+brew "solidity"
 brew "sbt"
 brew "maven"
 brew "scala"
@@ -127,6 +136,8 @@ brew "imagemagick" ,args: ["--with-webp"]
 brew "htop"
 
 brew "lynx"
+brew "surfraw"
+brew "w3m"
 brew "p7zip"
 brew "pigz"
 brew "pv"
