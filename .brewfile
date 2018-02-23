@@ -28,6 +28,8 @@ brew "stow"
 brew "moreutils"
 # brew GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew "findutils"
+# GNU tar
+brew "gnu-tar"
 # brew GNU `sed`, overwriting the built-in `sed`.
 brew "gnu-sed" ,args: ["--with-default-names"]
 brew "autojump"
