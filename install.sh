@@ -86,6 +86,13 @@ fi;
 printf "${GREEN}Installing oh-my-zsh${NORMAL}\n"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
+
+#
+# install sdk-man
+#
+printf "${GREEN}Installing sdk-man${NORMAL}\n"
+sh -c "$(curl -s https://get.sdkman.io | bash)"
+
 ln -fs ${DOT_FOLDER}/.profile ${HOME}/.profile
 ln -fs ${DOT_FOLDER}/.bash_profile ${HOME}/.bash_profile
 ln -fs ${DOT_FOLDER}/.zshrc ${HOME}/.zshrc

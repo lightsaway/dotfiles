@@ -1,4 +1,5 @@
 source ${HOME}/.dotfiles/.env_default
+source ${HOME}/.sdkman/bin/sdkman-init.sh
 
 export GOPATH=$HOME/golang
 export GOROOT=/usr/local/opt/go/libexec
