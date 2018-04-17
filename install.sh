@@ -67,8 +67,6 @@ printf "${YELLOW}Below are things that are not in brewfile${NORMAL}\n"
 brew bundle cleanup --file=.brewfile
 
 
-
-
 # Add entries to shells
 #
 printf "${GREEN}Modifying /etc/shells entries${NORMAL}\n"
@@ -93,6 +91,10 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 printf "${GREEN}Installing sdk-man${NORMAL}\n"
 sh -c "$(curl -s https://get.sdkman.io | bash)"
 
+
+#
+# Symlinking
+#
 ln -fs ${DOT_FOLDER}/.profile ${HOME}/.profile
 ln -fs ${DOT_FOLDER}/.bash_profile ${HOME}/.bash_profile
 ln -fs ${DOT_FOLDER}/.zshrc ${HOME}/.zshrc

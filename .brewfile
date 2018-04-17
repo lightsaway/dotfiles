@@ -11,7 +11,7 @@ tap "homebrew/dupes"
 tap "ethereum/ethereum" 
 
 brew "solidity"
-linkapps "solidity"
+#linkapps "solidity"
 
 #FONTS!!!
 cask "font-hack-nerd-font"
@@ -131,6 +131,7 @@ brew "tcpreplay"
 brew "tcptrace"
 brew "ucspi-tcp" # `tcpserver` etc.
 brew "xz"
+brew "acrogenesis/macchanger/macchanger"
 
 # brew other useful binaries.
 brew "ack"
