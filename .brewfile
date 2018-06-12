@@ -9,6 +9,9 @@ tap "homebrew/bundle"
 tap "homebrew/core"
 tap "homebrew/dupes"
 tap "ethereum/ethereum" 
+tap "loadimpact/k6"
+
+
 
 brew "solidity"
 #linkapps "solidity"
@@ -70,8 +73,11 @@ brew "grep"
 brew "openssh"
 brew "screen"
 
+# perf tools
+brew "k6"
 
 # Programming
+brew "bazel"
 brew "solidity"
 brew "sbt"
 brew "maven"
