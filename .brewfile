@@ -8,7 +8,7 @@ tap "getantibody/tap"
 tap "homebrew/bundle"
 tap "homebrew/core"
 tap "homebrew/dupes"
-tap "ethereum/ethereum" 
+tap "ethereum/ethereum"
 tap "loadimpact/k6"
 
 
@@ -23,6 +23,8 @@ cask "font-hack-nerd-font"
 brew "mas"
 
 brew "direnv"
+brew "ripgrep"
+brew "fzf"
 brew "the_silver_searcher" # the mighty ag
 brew "coreutils"
 #DOT FILE MANAGER

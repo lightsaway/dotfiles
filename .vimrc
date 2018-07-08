@@ -23,10 +23,13 @@ Plug 'ryanoasis/vim-devicons'             	" utf8 icons
 Plug 'itchyny/lightline.vim' 		    	" status line
 Plug 'scrooloose/nerdtree' 		    	" tree
 Plug 'scrooloose/nerdcommenter'             	" comment easy
-Plug 'wincent/command-t' "needs rake make   	" file jumber
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'wincent/command-t', {'do': 'cd ./ruby/command-t/ext/command-t && ruby extconf.rb && make'}	" file jumber
 Plug 'terryma/vim-multiple-cursors'  	    	" Ctrl-n => default key
 Plug 'ctrlpvim/ctrlp.vim'                 	" fuzzy search
 Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround'
 
 " git plugins
 Plug 'airblade/vim-gitgutter'
