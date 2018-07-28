@@ -27,8 +27,6 @@ brew "ripgrep"
 brew "fzf"
 brew "the_silver_searcher" # the mighty ag
 brew "coreutils"
-#DOT FILE MANAGER
-brew "stow"
 # brew some other useful utilities like `sponge`.
 brew "moreutils"
 # brew GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
@@ -102,6 +100,9 @@ brew "nvm"
 brew "git"
 brew "git-crypt"
 brew "git-lfs"
+brew "git-extras"
+brew "git-now"
+brew "git-test"
 brew "tig"
 
 brew "tfenv" #Terraform
@@ -116,6 +117,7 @@ brew "tor"
 brew "torsocks"
 brew "watch"
 brew "tmux"
+brew "yudai/gotty/gotty"
 
 # brew some CTF tools; see https://github.com/ctfs/write-ups.
 brew "aircrack-ng"
@@ -148,7 +150,7 @@ brew "ack"
 # brew exiv2
 brew "imagemagick" ,args: ["--with-webp"]
 brew "htop"
-
+brew "glances"
 brew "lynx"
 brew "surfraw"
 brew "w3m"
@@ -162,10 +164,11 @@ brew "tree"
 brew "vbindiff"
 brew "zopfli"
 
-brew "peco"
 brew "md5sha1sum"
 brew "mc"
 brew "peco"
+brew "https://raw.github.com/gleitz/howdoi/master/howdoi.rb"
+
 
 #MUSIC
 brew "shpotify"
