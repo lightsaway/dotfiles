@@ -104,6 +104,7 @@ brew "git-extras"
 brew "git-now"
 brew "git-test"
 brew "tig"
+brew "watchman"
 
 brew "tfenv" #Terraform
 brew "packer"
