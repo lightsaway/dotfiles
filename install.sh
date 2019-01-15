@@ -61,7 +61,7 @@ printf "${GREEN}backing up brew bottles ${NORMAL}\n"
 brew bundle dump --file=${DOT_BCKP_FOLDER}/Brewfile.${BCKP_SFX}
 
 printf "${GREEN}Installing brew bottles${NORMAL}\n"
-brew bundle --file=.brewfile --ignore-failures
+brew bundle --file=.brewfile --ignore-failures -vd
 
 printf "${YELLOW}Below are things that are not in brewfile${NORMAL}\n"
 brew bundle cleanup --file=.brewfile
