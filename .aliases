@@ -155,3 +155,4 @@ alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias vsc="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 
 alias incognito="unset HISTFILE"
+alias abl_bkp="rclone copy /Users/anton/ToolBox/Projects/finished /Volumes/solar/ableton_backup_`date +%Y-%m-%d`"

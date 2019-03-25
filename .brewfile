@@ -177,3 +177,6 @@ brew "shpotify"
 brew "flac"
 brew "sox"
 brew "cmus"
+
+# some cool backuper like rsync with many backends
+brew "rclone" 
