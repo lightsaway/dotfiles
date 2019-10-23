@@ -91,6 +91,10 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 printf "${GREEN}Installing sdk-man${NORMAL}\n"
 sh -c "$(curl -s https://get.sdkman.io | bash)"
 
+#
+# ammonite
+#
+mkdir -p ${HOME}/.ammonite
 
 #
 # Symlinking
@@ -100,6 +104,7 @@ ln -fs ${DOT_FOLDER}/.bash_profile ${HOME}/.bash_profile
 ln -fs ${DOT_FOLDER}/.zshrc ${HOME}/.zshrc
 ln -fs ${DOT_FOLDER}/.vimrc ${HOME}/.vimrc
 ln -fs ${DOT_FOLDER}/.gitconfig ${HOME}/.gitconfig
+ln -fs ${DOT_FOLDER}/predef.sc ${HOME}/.ammonite/predef.sc
 
 printf "${GREEN}Reloading shell${NORMAL}\n"
 reload
