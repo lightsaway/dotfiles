@@ -10,7 +10,7 @@ tap "homebrew/core"
 tap "homebrew/dupes"
 tap "ethereum/ethereum"
 tap "loadimpact/k6"
-
+tap "cjbassi/ytop"
 
 
 brew "solidity"
@@ -83,6 +83,7 @@ brew "sbt"
 brew "maven"
 brew "scala"
 brew "ammonite-repl"
+brew "haskell-stack"
 brew "ruby"
 brew "rbenv"
 brew "python3"
@@ -151,6 +152,7 @@ brew "ack"
 # brew exiv2
 brew "imagemagick" ,args: ["--with-webp"]
 brew "htop"
+brew "ytop"
 brew "glances"
 brew "lynx"
 brew "surfraw"
@@ -177,6 +179,9 @@ brew "shpotify"
 brew "flac"
 brew "sox"
 brew "cmus"
+#for spleeter/deezer
+cask "miniconda"
+
 
 # some cool backuper like rsync with many backends
-brew "rclone" 
+brew "rclone"
