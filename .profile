@@ -7,6 +7,7 @@ export PATH=$PATH:$GOROOT:$GOPATH/bin
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="/opt/homebrew/bin:$PATH"
 eval "$(pyenv init -)"
 
 for file in .{functions,aliases,exports}; do

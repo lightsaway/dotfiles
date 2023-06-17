@@ -64,7 +64,7 @@ printf "${GREEN}Installing brew bottles${NORMAL}\n"
 brew bundle --file=.brewfile -q -vd
 
 printf "${YELLOW}Below are things that are not in brewfile${NORMAL}\n"
-brew bundle cleanup --file=.brewfile
+brew bundle cleanup --force --file=.brewfile
 
 
 # Add entries to shells
