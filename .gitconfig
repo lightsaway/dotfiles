@@ -80,7 +80,7 @@
 
 	# Remove the old tag with this name and tag the latest commit with it.
 	retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
-	
+
 	# Push to all remotes
 	pushall = "!f() { git remote | xargs -L1 git push --all;}; f"
 
@@ -220,3 +220,11 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+[branch]
+	autoSetupMerge = always
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

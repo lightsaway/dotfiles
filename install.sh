@@ -114,6 +114,8 @@ ln -fs ${DOT_FOLDER}/.vimrc ${HOME}/.vimrc
 ln -fs ${DOT_FOLDER}/.gitconfig ${HOME}/.gitconfig
 ln -fs ${DOT_FOLDER}/predef.sc ${HOME}/.ammonite/predef.sc
 
+ln -fs ${DOT_FOLDER}/k9s/hotkey.yml ${HOME}/.k9s/hotkey.yml
+
 printf "${GREEN}Reloading shell${NORMAL}\n"
 reload
 

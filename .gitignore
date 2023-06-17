@@ -3,3 +3,7 @@ backup
 
 #excluding symlink to self if created
 dotfiles
+
+.idea
+.vscode
+target

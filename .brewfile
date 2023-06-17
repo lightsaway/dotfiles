@@ -174,3 +174,6 @@ cask "miniconda"
 
 # some cool backuper like rsync with many backends
 brew "rclone"
+
+# k8s
+brew "k8s"
