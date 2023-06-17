@@ -1,12 +1,12 @@
 [user]
-	email = anton.serhiienko@klarna.com
+	email = a.a.sergienko@gmail.com
 	name = Anton Serhiienko
 [push]
 
 	# https://git-scm.com/docs/git-config#git-config-pushdefault
 	default = current
 	# Make `git push` push relevant annotated tags when pushing branches out.
-	followTags = true	
+	followTags = true
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -23,7 +23,7 @@
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
 	lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
 
-	
+
 	# View the current working tree status using the short format
 	s = status -s
 
@@ -40,7 +40,7 @@
 	cl = clone
 	ci = commit
 	co = checkout
-	br = branch 
+	br = branch
 	diff = diff --word-diff
 	dc = diff --cached
 	cm = checkout master

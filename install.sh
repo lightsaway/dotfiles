@@ -30,7 +30,7 @@ fi
 #
 if ! type "brew" > /dev/null; then
   printf "${YELLOW}No brew present....Installing${NORMAL}\n"
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
   printf "${GREEN}updating brew${NORMAL}\n"
   # Make sure we’re using the latest Home.
@@ -61,7 +61,7 @@ printf "${GREEN}backing up brew bottles ${NORMAL}\n"
 brew bundle dump --file=${DOT_BCKP_FOLDER}/Brewfile.${BCKP_SFX}
 
 printf "${GREEN}Installing brew bottles${NORMAL}\n"
-brew bundle --file=.brewfile --ignore-failures -vd
+brew bundle --file=.brewfile -q -vd
 
 printf "${YELLOW}Below are things that are not in brewfile${NORMAL}\n"
 brew bundle cleanup --file=.brewfile
@@ -83,13 +83,21 @@ fi;
 #
 printf "${GREEN}Installing oh-my-zsh${NORMAL}\n"
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ] ; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+fi
+if [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting ] ; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+fi
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
 
 
 #
 # install sdk-man
 #
 printf "${GREEN}Installing sdk-man${NORMAL}\n"
-sh -c "$(curl -s https://get.sdkman.io | bash)"
+curl -s https://get.sdkman.io | bash
 
 #
 # ammonite
