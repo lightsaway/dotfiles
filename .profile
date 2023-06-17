@@ -19,4 +19,5 @@ unset file
 
 
 export GIT_EDITOR=vim
-. "$HOME/.cargo/env"
+
+source "$HOME/.cargo/env"

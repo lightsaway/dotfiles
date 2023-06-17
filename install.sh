@@ -99,6 +99,9 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 printf "${GREEN}Installing sdk-man${NORMAL}\n"
 curl -s https://get.sdkman.io | bash
 
+printf "${GREEN}Installing rust${NORMAL}\n"
+curl https://sh.rustup.rs -sSf | sh
+
 #
 # ammonite
 #
