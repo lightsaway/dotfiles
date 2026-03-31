@@ -174,6 +174,7 @@
 	untracked = cyan
 
 [commit]
+	template = ~/.stCommitMsg
 
 	# https://help.github.com/articles/signing-commits-using-gpg/
 	# disable for now
@@ -224,7 +225,15 @@
 	autoSetupMerge = always
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[url "https://"]
+	insteadOf = git://
+[credential]
+	helper = store
+
+
+[includeIf "gitdir:~/**/originlines/**"]
+    path = ~/.gitconfig-originlines

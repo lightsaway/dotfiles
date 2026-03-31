@@ -1,8 +1,17 @@
-[[ -e ~/.profile ]] && source ${HOME}/.profile
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+# =============================================================================
+# Bash profile (sources shared .profile)
+# =============================================================================
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="${HOME}/.sdkman"
-[[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
+[[ -f "${HOME}/.profile" ]] && source "${HOME}/.profile"
 
-. "$HOME/.cargo/env"
+# Bash completion
+if command -v brew &>/dev/null; then
+  [[ -f "$(brew --prefix)/etc/bash_completion" ]] && source "$(brew --prefix)/etc/bash_completion"
+  [[ -f "$(brew --prefix)/etc/bash_completion.d" ]] && source "$(brew --prefix)/etc/bash_completion.d"
+fi
+
+# Bash-specific history settings
+export HISTSIZE=50000
+export HISTFILESIZE=50000
+export HISTCONTROL=ignoredups:erasedups
+shopt -s histappend 2>/dev/null

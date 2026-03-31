@@ -1,0 +1,28 @@
+{
+  "suggest.noselect": false,
+  "suggest.enablePreselect": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+
+  "metals.serverVersion": "latest.release",
+  "metals.showImplicitArguments": true,
+  "metals.showImplicitConversionsAndClasses": true,
+  "metals.showInferredType": true,
+  "metals.enableSemanticHighlighting": true,
+  "metals.superMethodLensesEnabled": true,
+
+  "tsserver.enableJavascript": true,
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.format.semicolons": "insert",
+  "javascript.suggest.autoImports": true,
+
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+
+  "rust-analyzer.checkOnSave.command": "clippy",
+
+  "go.goplsOptions": {
+    "completeUnimported": true
+  }
+}

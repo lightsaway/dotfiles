@@ -7,3 +7,7 @@ dotfiles
 .idea
 .vscode
 target
+
+# Nix
+result
+.direnv

@@ -1,179 +1,130 @@
-# brew GNU core utilities (those that come with macOS are outdated).
-# Don’t forget to add `$( --prefix coreutils)/libexec/gnubin` to `$PATH`.
-tap "bramstein/webfonttools"
-tap "caskroom/cask"
-tap "caskroom/fonts"
-tap "caskroom/versions"
-tap "getantibody/tap"
-tap "homebrew/bundle"
-tap "homebrew/core"
-tap "homebrew/dupes"
-tap "loadimpact/k6"
-tap "cjbassi/ytop"
-
-
-
-
-#FONTS!!!
+# =============================================================================
+# Fonts
+# =============================================================================
 cask "font-hack-nerd-font"
+cask "font-fira-code"
 
-#MAC APP STORE CLI
+# =============================================================================
+# macOS GUI Apps
+# =============================================================================
+cask "iterm2"
+cask "appcleaner"
+cask "betterdisplay"
+cask "ghostty"
+cask "lookaway"
+cask "openmtp"
+cask "rsyncui"
+cask "stretchly"
+cask "utm"
+
+# =============================================================================
+# Mac App Store
+# =============================================================================
 brew "mas"
 
-brew "direnv"
-brew "ripgrep"
-brew "fzf"
-brew "the_silver_searcher" # the mighty ag
-brew "coreutils"
-# brew some other useful utilities like `sponge`.
-brew "moreutils"
-# brew GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew "findutils"
-# GNU tar
-brew "gnu-tar"
-# brew GNU `sed`, overwriting the built-in `sed`.
-brew "gnu-sed" ,args: ["--with-default-names"]
-brew "autojump"
-# Magnificent app which corrects your previous console command
-brew "thefuck"
-# Symlink manager
-brew "stow"
-
-# brew Bash 4.
-# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
-# running `chsh`.
+# =============================================================================
+# Shell & Terminal
+# =============================================================================
 brew "bash"
-brew "bash-completion2"
+brew "bash-completion@2"
 brew "zsh"
 brew "zsh-completions"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
-brew "getantibody/tap/antibody"
+brew "thefuck"
+brew "direnv"
+brew "tmux"
+brew "starship"
 
-# brew `wget` with IRI support.
-brew "wget" ,args: ["--with-iri"]
-# brew GnuPG to enable PGP-signing commits.
-brew "gnupg"
-brew "gettext"
-
-# brew font tools.
-brew "sfnt2woff"
-brew "sfnt2woff-zopfli"
-brew "woff2"
-brew "bramstein/webfonttools/sfnt2woff"
-brew "bramstein/webfonttools/sfnt2woff-zopfli"
-brew "bramstein/webfonttools/woff2"
-
-# brew more recent versions of some macOS tools.
-brew "vim" ,args:["--with-override-system-vi"]
+# =============================================================================
+# Core Utilities (GNU replacements)
+# =============================================================================
+brew "coreutils"
+brew "moreutils"
+brew "findutils"
+brew "gnu-tar"
+brew "gnu-sed"
 brew "grep"
 brew "openssh"
-brew "screen"
+brew "wget"
 
-# perf tools
-brew "k6"
+# =============================================================================
+# Search & Navigation
+# =============================================================================
+brew "ripgrep"
+brew "fzf"
+brew "autojump"
+brew "tree"
 
-# Programming
-#brew "bazel"
-brew "sbt"
-brew "maven"
-brew "scala"
-brew "ammonite-repl"
-brew "python3"
-brew "pyenv"
-brew "jenv"
-brew "cmake"
-brew "go"
-brew "glide"
-brew "lua"
-brew "nvm"
+# =============================================================================
+# Git
+# =============================================================================
 brew "git"
 brew "git-crypt"
 brew "git-lfs"
 brew "git-extras"
-brew "git-now"
-brew "git-test"
-brew "tig"
-brew "watchman"
+brew "lazygit"
+brew "gh"
 
-brew "tfenv" #Terraform
-brew "packer"
+# =============================================================================
+# Programming Languages & Managers
+# =============================================================================
+brew "jenv"
+brew "nvm"
+brew "go"
+brew "sbt"
+brew "maven"
+brew "scala"
+brew "ammonite-repl"
+brew "zig"
+
+# =============================================================================
+# Cloud & Infrastructure
+# =============================================================================
 brew "awscli"
+brew "tfenv"
+brew "helm"
+brew "kustomize"
 
+# =============================================================================
+# JSON/YAML Processing
+# =============================================================================
 brew "jq"
-brew "jshon"
-brew "awk"
-brew "midnight-commander"
-brew "tor"
-brew "torsocks"
-brew "watch"
-brew "tmux"
-brew "yudai/gotty/gotty"
+brew "yq"
 
-# brew some CTF tools; see https://github.com/ctfs/write-ups.
-brew "aircrack-ng"
-brew "bfg"
-brew "binutils"
-brew "binwalk"
-brew "cifer"
-brew "dex2jar"
-brew "dns2tcp"
-brew "fcrackzip"
-brew "foremost"
-brew "hashpump"
-brew "hydra"
-brew "john"
-brew "knock"
-brew "netpbm"
-brew "nmap"
-brew "pngcheck"
-brew "socat"
-brew "sqlmap"
-brew "tcpflow"
-brew "tcpreplay"
-brew "tcptrace"
-brew "ucspi-tcp" # `tcpserver` etc.
-brew "xz"
-brew "acrogenesis/macchanger/macchanger"
-
-# brew other useful binaries.
-brew "ack"
-# brew exiv2
-brew "imagemagick" ,args: ["--with-webp"]
+# =============================================================================
+# Monitoring
+# =============================================================================
 brew "htop"
-brew "ytop"
-brew "glances"
-brew "lynx"
-brew "surfraw"
-brew "w3m"
-brew "p7zip"
-brew "pigz"
-brew "pv"
-brew "rename"
-brew "rlwrap"
+brew "watch"
+brew "cloc"
+brew "act"
+
+# =============================================================================
+# Network & Security
+# =============================================================================
+brew "gnupg"
+brew "nmap"
+brew "socat"
+brew "mkcert"
 brew "ssh-copy-id"
-brew "tree"
-brew "vbindiff"
-brew "zopfli"
 
-brew "md5sha1sum"
-brew "mc"
-brew "peco"
-brew "https://raw.github.com/gleitz/howdoi/master/howdoi.rb"
+# =============================================================================
+# File & Text Utilities
+# =============================================================================
+brew "p7zip"
+brew "xz"
+brew "imagemagick"
 
-
-#MUSIC
-brew "shpotify"
-## convertors
+# =============================================================================
+# Media & Audio
+# =============================================================================
+brew "ffmpeg"
 brew "flac"
-brew "sox"
-brew "cmus"
-#for spleeter/deezer
-cask "miniconda"
 
-
-# some cool backuper like rsync with many backends
-brew "rclone"
-
-# k8s
-brew "k8s"
+# =============================================================================
+# Databases (dev)
+# =============================================================================
+brew "postgresql@14"
+brew "mysql-client"
+brew "librdkafka"

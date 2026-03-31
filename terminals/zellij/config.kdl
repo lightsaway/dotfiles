@@ -1,0 +1,95 @@
+// Zellij Configuration
+// Docs: https://zellij.dev/documentation/
+
+// Use simplified UI (cleaner)
+simplified_ui true
+
+// Theme (catppuccin mocha built-in)
+theme "catppuccin-mocha"
+
+// Pane frames
+pane_frames false
+
+// Mouse support
+mouse_mode true
+
+// Copy on select
+copy_on_select true
+
+// Scrollback
+scroll_buffer_size 10000
+
+// Session serialization (restore on reconnect)
+session_serialization true
+
+// Default layout
+default_layout "compact"
+
+// Mirror tmux-like prefix with Ctrl-a
+keybinds clear-defaults=true {
+    normal {
+        // Pane navigation (Alt + vim keys)
+        bind "Alt h" { MoveFocus "Left"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt k" { MoveFocus "Up"; }
+        bind "Alt l" { MoveFocus "Right"; }
+
+        // Pane resize
+        bind "Alt H" { Resize "Increase Left"; }
+        bind "Alt J" { Resize "Increase Down"; }
+        bind "Alt K" { Resize "Increase Up"; }
+        bind "Alt L" { Resize "Increase Right"; }
+
+        // Splits
+        bind "Alt |" { NewPane "Right"; }
+        bind "Alt -" { NewPane "Down"; }
+
+        // Tabs
+        bind "Alt t" { NewTab; }
+        bind "Alt 1" { GoToTab 1; }
+        bind "Alt 2" { GoToTab 2; }
+        bind "Alt 3" { GoToTab 3; }
+        bind "Alt 4" { GoToTab 4; }
+        bind "Alt 5" { GoToTab 5; }
+        bind "Alt [" { GoToPreviousTab; }
+        bind "Alt ]" { GoToNextTab; }
+
+        // Close pane
+        bind "Alt w" { CloseFocus; }
+
+        // Fullscreen toggle
+        bind "Alt f" { ToggleFocusFullscreen; }
+
+        // Floating pane
+        bind "Alt F" { ToggleFloatingPanes; }
+
+        // Scroll mode (vim-like)
+        bind "Alt s" { SwitchToMode "Scroll"; }
+
+        // Session manager
+        bind "Alt o" { SwitchToMode "Session"; }
+
+        // Detach
+        bind "Alt d" { Detach; }
+
+        // Quit
+        bind "Alt q" { Quit; }
+    }
+
+    scroll {
+        bind "j" "Down" { ScrollDown; }
+        bind "k" "Up" { ScrollUp; }
+        bind "d" { HalfPageScrollDown; }
+        bind "u" { HalfPageScrollUp; }
+        bind "Esc" "q" { SwitchToMode "Normal"; }
+    }
+
+    session {
+        bind "d" { Detach; }
+        bind "Esc" "q" { SwitchToMode "Normal"; }
+    }
+
+    shared_except "normal" {
+        bind "Esc" { SwitchToMode "Normal"; }
+    }
+}

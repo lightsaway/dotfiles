@@ -1,0 +1,397 @@
+" =============================================================================
+" vim-plug auto-install
+" =============================================================================
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" =============================================================================
+" Plugins
+" =============================================================================
+call plug#begin('~/.vim/plugged')
+
+" --- LSP / Completion ---
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+" --- Language support ---
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
+Plug 'ziglang/zig.vim', { 'for': 'zig' }
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'HerringtonDarkholme/yats.vim'
+
+" --- File navigation ---
+Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" --- Git ---
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" --- Editing ---
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'mg979/vim-visual-multi'
+Plug 'jiangmiao/auto-pairs'
+
+" --- UI ---
+Plug 'itchyny/lightline.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+
+call plug#end()
+
+" =============================================================================
+" General Settings
+" =============================================================================
+set nocompatible
+filetype plugin indent on
+syntax on
+
+let mapleader = ","
+
+set encoding=utf-8
+set fileencoding=utf-8
+set noswapfile
+set nobackup
+set nowritebackup
+set hidden                      " Allow switching buffers without saving
+set updatetime=250              " Faster updates (gitgutter, etc.)
+set timeoutlen=500              " Key sequence timeout
+set signcolumn=yes              " Always show sign column
+
+" --- UI ---
+set number                      " Line numbers
+set relativenumber              " Relative line numbers
+set cursorline                  " Highlight current line
+set showmatch                   " Highlight matching brackets
+set scrolloff=8                 " Keep 8 lines above/below cursor
+set sidescrolloff=8
+set laststatus=2                " Always show status line
+set noshowmode                  " Lightline shows the mode
+set termguicolors               " True color support
+set background=dark
+
+" Theme
+silent! colorscheme catppuccin_mocha
+
+" --- Search ---
+set incsearch                   " Search as you type
+set hlsearch                    " Highlight search results
+set ignorecase                  " Case insensitive search...
+set smartcase                   " ...unless uppercase is used
+
+" --- Indentation ---
+set expandtab                   " Spaces instead of tabs
+set tabstop=4                   " Tab width
+set shiftwidth=4                " Indent width
+set softtabstop=4
+set smartindent
+set autoindent
+
+" 2-space indent for certain file types
+autocmd FileType javascript,typescript,json,yaml,html,css,scss,nix,lua,vim
+  \ setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+" --- Splits ---
+set splitbelow                  " Open horizontal splits below
+set splitright                  " Open vertical splits right
+
+" --- Completion ---
+set wildmenu                    " Command-line completion
+set wildmode=longest:full,full
+set wildignore+=*.log,*.sql,*.cache,.git,target,node_modules,*.o,*.pyc
+
+" --- Performance ---
+set lazyredraw                  " Don't redraw during macros
+set ttyfast
+
+" --- Backspace fix ---
+set backspace=indent,eol,start
+
+" --- Clipboard ---
+set clipboard=unnamed           " Use system clipboard
+
+" --- Persistent undo ---
+if has('persistent_undo')
+  set undodir=~/.vim/undodir
+  set undofile
+  silent !mkdir -p ~/.vim/undodir
+endif
+
+" =============================================================================
+" Keybindings
+" =============================================================================
+
+" Space for command mode
+noremap <space> :
+
+" Quick ESC
+inoremap jj <ESC>
+
+" Quick save
+nnoremap <leader>w :w<CR>
+
+" Quick quit buffer
+nnoremap <leader>q :bd<CR>
+
+" Clear search highlighting
+nnoremap <leader><space> :nohlsearch<CR>
+
+" --- Splits navigation ---
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" --- Split resizing ---
+nnoremap <C-Up> :resize +2<CR>
+nnoremap <C-Down> :resize -2<CR>
+nnoremap <C-Left> :vertical resize -2<CR>
+nnoremap <C-Right> :vertical resize +2<CR>
+
+" --- Buffer navigation ---
+nnoremap <S-l> :bnext<CR>
+nnoremap <S-h> :bprevious<CR>
+
+" --- Move lines up/down ---
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" --- Keep cursor centered ---
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" --- Better indenting (stay in visual mode) ---
+vnoremap < <gv
+vnoremap > >gv
+
+" =============================================================================
+" FZF
+" =============================================================================
+" Use ripgrep for searching
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --smart-case
+  set grepformat=%f:%l:%c:%m
+endif
+
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>r :Rg<CR>
+nnoremap <leader>/ :BLines<CR>
+nnoremap <leader>h :History<CR>
+nnoremap <leader>gc :Commits<CR>
+nnoremap <leader>gs :GFiles?<CR>
+
+" Grep word under cursor (K is remapped to CoC hover when LSP is active)
+nnoremap <leader>K :Rg <C-R><C-W><CR>
+
+" FZF layout
+let g:fzf_layout = { 'down': '40%' }
+
+" =============================================================================
+" NERDTree
+" =============================================================================
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>j :NERDTreeFind<CR>
+
+let NERDTreeShowHidden = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeIgnore = ['\.git$', 'node_modules', 'target', '__pycache__', '\.pyc$', '\.o$', '\.class$']
+let NERDTreeMapActivateNode = '<right>'
+
+" Open NERDTree when vim starts with a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" Close vim if NERDTree is the last window
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" =============================================================================
+" Lightline
+" =============================================================================
+let g:lightline = {
+      \ 'colorscheme': 'catppuccin_mocha',
+      \ 'active': {
+      \   'left': [ ['mode', 'paste'],
+      \             ['gitbranch', 'readonly', 'filename', 'modified'] ],
+      \   'right': [ ['lineinfo'],
+      \              ['percent'],
+      \              ['fileformat', 'fileencoding', 'filetype'] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+
+" =============================================================================
+" Git Gutter
+" =============================================================================
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '-'
+
+" Navigate hunks
+nmap ]g <Plug>(GitGutterNextHunk)
+nmap [g <Plug>(GitGutterPrevHunk)
+
+" Stage/undo hunks
+nmap <leader>ga <Plug>(GitGutterStageHunk)
+nmap <leader>gu <Plug>(GitGutterUndoHunk)
+nmap <leader>gp <Plug>(GitGutterPreviewHunk)
+
+" =============================================================================
+" Fugitive (Git)
+" =============================================================================
+nnoremap <leader>gg :Git<CR>
+nnoremap <leader>gd :Gdiffsplit<CR>
+nnoremap <leader>gl :Git log --oneline<CR>
+nnoremap <leader>gb :Git blame<CR>
+
+" =============================================================================
+" CoC (Conquer of Completion) - LSP Client
+" =============================================================================
+" Install these CoC extensions on first use:
+"   :CocInstall coc-tsserver coc-metals coc-json coc-html coc-css
+"   :CocInstall coc-go coc-rust-analyzer coc-pyright
+"
+" coc-tsserver   - TypeScript/JavaScript LSP
+" coc-metals     - Scala Metals LSP
+" coc-json       - JSON schemas
+" coc-go         - Go (gopls)
+" coc-rust-analyzer - Rust
+" coc-pyright    - Python
+
+let g:coc_global_extensions = [
+      \ 'coc-tsserver',
+      \ 'coc-metals',
+      \ 'coc-json',
+      \ 'coc-html',
+      \ 'coc-css',
+      \ 'coc-go',
+      \ 'coc-rust-analyzer',
+      \ 'coc-pyright',
+      \ ]
+
+" Use Tab for trigger completion and navigate
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Confirm completion with Enter
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+      \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Trigger completion manually with Ctrl+Space
+inoremap <silent><expr> <C-space> coc#refresh()
+
+" Go to definition / references / type
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Hover documentation with K (overrides grep word)
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . ' ' . expand('<cword>')
+  endif
+endfunction
+
+" Rename symbol
+nmap <leader>rn <Plug>(coc-rename)
+
+" Code actions
+nmap <leader>ca <Plug>(coc-codeaction-cursor)
+nmap <leader>cf <Plug>(coc-fix-current)
+
+" Format selected region
+xmap <leader>F <Plug>(coc-format-selected)
+nmap <leader>F <Plug>(coc-format)
+
+" Navigate diagnostics
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
+
+" Show all diagnostics
+nnoremap <silent> <leader>d :<C-u>CocList diagnostics<CR>
+
+" Show outline (symbols in file)
+nnoremap <silent> <leader>o :<C-u>CocList outline<CR>
+
+" Search workspace symbols
+nnoremap <silent> <leader>s :<C-u>CocList -I symbols<CR>
+
+" Highlight symbol under cursor on hold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" =============================================================================
+" Language-specific
+" =============================================================================
+
+" Go
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_def_mapping_enabled = 0   " Let CoC handle go-to-definition
+
+" Rust
+let g:rustfmt_autosave = 1
+
+" TypeScript / JavaScript
+autocmd FileType typescript,typescriptreact,javascript,javascriptreact
+      \ setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+" Scala - Metals specific
+" Show worksheet output inline (for .worksheet.sc files)
+autocmd FileType scala nmap <leader>ws <Plug>(coc-metals-expand-decoration)
+
+" =============================================================================
+" Commentary (replaces NERDCommenter)
+" =============================================================================
+" gcc - toggle comment on line
+" gc  - toggle comment on selection (visual mode)
+" gcap - toggle comment on paragraph
+
+" =============================================================================
+" Strip trailing whitespace on save
+" =============================================================================
+function! s:StripTrailingSpace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
+endfunction
+
+autocmd BufWritePre *.c,*.go,*.rs,*.scala,*.py,*.js,*.ts,*.jsx,*.tsx,*.json,*.yaml,*.yml,*.html,*.css,*.scss,*.md,*.rb,*.lua,*.nix,*.zig :call <SID>StripTrailingSpace()
+
+" =============================================================================
+" Cursor shape (works in iTerm2, Ghostty, and most modern terminals)
+" =============================================================================
+let &t_SI = "\e[6 q"           " Insert mode: thin line
+let &t_SR = "\e[4 q"           " Replace mode: underline
+let &t_EI = "\e[2 q"           " Normal mode: block
+
+" Font (for GUI vim / MacVim)
+set guifont=FiraCode\ Nerd\ Font:h14
