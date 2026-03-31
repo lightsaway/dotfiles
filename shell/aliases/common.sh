@@ -20,6 +20,11 @@ alias h="history"
 alias j_log_pretty="jq -r '[.level, .timestamp, .message] | join(\" | \")'"
 alias pods="kubectl get pods"
 
+# bat (cat replacement with syntax highlighting)
+if [ -x "$(command -v bat)" ]; then
+	alias cat="bat --paging=never"
+fi
+
 # Modern ls (eza) with fallback
 if [ -x "$(command -v eza)" ]; then
 	alias l="eza -lF"

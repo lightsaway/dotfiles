@@ -53,6 +53,9 @@ brew "wget"
 # =============================================================================
 brew "ripgrep"
 brew "fzf"
+brew "eza"
+brew "bat"
+brew "fd"
 brew "autojump"
 brew "tree"
 
@@ -60,6 +63,7 @@ brew "tree"
 # Git
 # =============================================================================
 brew "git"
+brew "git-delta"
 brew "git-crypt"
 brew "git-lfs"
 brew "git-extras"
