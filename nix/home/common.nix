@@ -45,6 +45,11 @@
     dust            # better du
     duf             # better df
     tldr            # quick command reference
+    sd              # intuitive sed alternative
+    procs           # modern ps replacement
+    choose          # human-friendly cut/awk
+    doggo           # user-friendly dig alternative
+    gping           # ping with graph
 
     # Languages & build tools
     go
@@ -66,6 +71,9 @@
 
     # Misc
     bc
+    hyperfine       # CLI benchmarking
+    glow            # terminal markdown renderer
+    difftastic      # structural/syntax-aware diffs
   ];
 
   # =========================================================================
@@ -263,6 +271,40 @@
   # Eza (modern ls, replaces exa)
   programs.eza = {
     enable = true;
+    icons = "auto";
+    git = true;
+    extraOptions = [
+      "--group-directories-first"
+    ];
+  };
+
+  # Shell aliases
+  home.shellAliases = {
+    # eza
+    l = "eza -lF";
+    la = "eza -laF";
+    lt = "eza --tree --level=2 --git-ignore";
+    ll = "eza -lahF --git --icons --group-directories-first";
+    # modern CLI replacements
+    du = "dust";
+    df = "duf";
+    ps = "procs";
+    dig = "doggo";
+    f = "fd";
+    # fzf + bat preview
+    preview = "fzf --preview 'bat --color=always {}'";
+    # serve current dir
+    serve = "python3 -m http.server";
+    # git shortcuts
+    gs = "git status";
+    gd = "git diff";
+    gl = "git log --oneline -20";
+    gp = "git push";
+    # docker shortcuts
+    dc = "docker compose";
+    dps = "docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'";
+    # copy working directory
+    cpwd = "pwd | tr -d '\\n' | pbcopy";
   };
 
   # Direnv

@@ -11,6 +11,9 @@ if [[ -f "$ZSH/oh-my-zsh.sh" ]]; then
   source "$ZSH/oh-my-zsh.sh"
 fi
 
+# Re-source aliases after oh-my-zsh (it overrides ls, etc.)
+[[ -f "${DOT_FOLDER}/shell/aliases/common.sh" ]] && source "${DOT_FOLDER}/shell/aliases/common.sh"
+
 # =============================================================================
 # Plugins (loaded separately from oh-my-zsh)
 # =============================================================================

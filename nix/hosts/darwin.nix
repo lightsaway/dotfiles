@@ -39,6 +39,12 @@
       Clicking = true;
       TrackpadThreeFingerDrag = true;
     };
+    CustomUserPreferences = {
+      "com.googlecode.iterm2" = {
+        PrefsCustomFolder = "~/dotfiles/iterm2";
+        LoadPrefsFromCustomFolder = true;
+      };
+    };
   };
 
   # Register shells
@@ -110,6 +116,11 @@
       "rsyncui"
       "stretchly"
       "utm"
+      "obsidian"
+      "raycast"
+      "stats"
+      "the-unarchiver"
+      "keycastr"
     ];
   };
 

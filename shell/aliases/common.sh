@@ -30,6 +30,8 @@ if [ -x "$(command -v eza)" ]; then
 	alias l="eza -lF"
 	alias la="eza -laF"
 	alias ls="eza"
+	alias lt="eza --tree --level=2 --git-ignore"
+	alias ll="eza -lahF --git --icons --group-directories-first"
 else
 	# Detect which `ls` flavor is in use
 	if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -44,6 +46,36 @@ else
 	alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 	alias ls="command ls ${colorflag}"
 fi
+
+# Modern CLI replacements
+if [ -x "$(command -v dust)" ]; then alias du="dust"; fi
+if [ -x "$(command -v duf)" ]; then alias df="duf"; fi
+if [ -x "$(command -v procs)" ]; then alias ps="procs"; fi
+if [ -x "$(command -v doggo)" ]; then alias dig="doggo"; fi
+
+# Quick file search with fd
+if [ -x "$(command -v fd)" ]; then alias f="fd"; fi
+
+# Preview files with fzf + bat
+if [ -x "$(command -v fzf)" ] && [ -x "$(command -v bat)" ]; then
+	alias preview="fzf --preview 'bat --color=always {}'"
+fi
+
+# Serve current dir over HTTP
+alias serve="python3 -m http.server"
+
+# Git shortcuts
+alias gs="git status"
+alias gd="git diff"
+alias gl="git log --oneline -20"
+alias gp="git push"
+
+# Docker shortcuts
+alias dc="docker compose"
+alias dps="docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'"
+
+# Copy working directory path
+alias cpwd="pwd | tr -d '\n' | pbcopy"
 
 # Always enable colored `grep` output
 alias grep='grep --color=auto'
