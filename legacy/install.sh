@@ -168,6 +168,9 @@ _link "${DOT_FOLDER}/terminals/zellij/config.kdl" "${HOME}/.config/zellij/config
 # Starship prompt
 _link "${DOT_FOLDER}/terminals/starship.toml"     "${HOME}/.config/starship.toml"
 
+# Atuin (shell history)
+_link "${DOT_FOLDER}/terminals/atuin/config.toml" "${HOME}/.config/atuin/config.toml"
+
 # =============================================================================
 # 8. Register shells
 # =============================================================================

@@ -101,3 +101,6 @@ fi
 # Aliases
 # =============================================================================
 [[ -x "$HOME/.claude/local/claude" ]] && alias claude="$HOME/.claude/local/claude"
+
+# bun completions
+[ -s "/Users/atoshi/.bun/_bun" ] && source "/Users/atoshi/.bun/_bun"

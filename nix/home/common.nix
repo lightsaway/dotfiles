@@ -318,6 +318,7 @@
     enable = true;
     enableZshIntegration = true;
   };
+  home.file.".config/atuin/config.toml".source = ../../terminals/atuin/config.toml;
 
   # Zoxide (modern cd, replaces autojump)
   programs.zoxide = {
